@@ -1,8 +1,12 @@
 n = int(input("Entrez un entier : "))
-fact = 1
+n_init = n
 
-def facto(n, fact):
-    if i > n:
-        fact = fact * (i + 1)
+def facto(n):
+    if n == 1:
+        return n
+    else:
+        return n * facto(n - 1)
 
-print(f"La factorielle de {n} est {fact}.")
+fact = facto(n)
+
+print(f"La factorielle de {n_init} est {fact}.")
