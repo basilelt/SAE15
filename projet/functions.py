@@ -33,3 +33,19 @@ def facto(n):
 
 def list_loto():
     return numpy.array(list(i for i in range(1, 46)))
+
+def test_trichoix(tri):
+    while True:
+        test = True
+        try:
+            tri = int(tri)
+        except ValueError:
+            tri = input("Désolé la valeur saisie n'est pas un nombre, réessayez : ")
+            test = False
+            
+        if test:
+            if tri == 1 or tri == 2 or tri == 3:
+                return tri
+            
+            else:
+                tri = input("Veuillez entrer une valeur étant 1, 2 ou 3, réessayez :")

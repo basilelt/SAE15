@@ -37,4 +37,4 @@ def run_loto(lst):
         
         rejouer = test_bool(input("Voulez-vous rejouer ? (0 : non, 1 : oui) : "))
 
-    return(tirage)
+    return tirage

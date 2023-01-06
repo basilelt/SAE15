@@ -4,7 +4,7 @@ def esperance(lst, p):
     e = 0
     
     for i in range(len(lst)):
-        e = e + p * lst[i] # Somme des p_i * x_i
+        e += p * lst[i] # Somme des p_i * x_i
 
     return e
 
