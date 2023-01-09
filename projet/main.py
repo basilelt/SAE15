@@ -1,14 +1,32 @@
-def facto(n):
-    if n <= 1:
-        return 1
-    
-    return n * facto(n - 1)
+from loto import run_loto
+from stats import run_stats
+from functions import list_loto, test_trichoix, test_bool
+from cocktail import run_cocktail
+from insertion import run_insertion
+from fusion import run_fusion
+from dicho import run_dicho
 
-print("La probabilité d'un évenement aléatoire parmis 45, provenants d'une loi uniforme discrète, est 1 / 45 = ", "{:.3f}".format(round(1 / 45, 3)), "\n",
-    "L'espérance de cette variable aléatoire est donc (45 + 1) / 2 = ", "{:.3f}".format(round((45 + 1) / 2, 3)), "\n",
-    f"La probabilité d'avoir une combinaison spécifique (peut importe l'ordre) est : 1 / 45C5 = ", "{:.9f}".format(round(1 / (facto(45) / (facto(5) * facto(45 - 5))), 9)))
+lst = list_loto()
 
-import loto
+tirage = run_loto(lst)
 
-tirage = loto.run_loto()
-print(tirage)
+print()
+run_stats(lst)
+
+print("\nVoici le(s) tirage(s) non-trié(s) : \n", tirage)
+
+tri_choix = test_trichoix(input("Quel tri voulez-vous utiliser ? (cocktail : 1, insertion : 2, fusion : 3) : "))
+if tri_choix == 1:
+    tirage = run_cocktail(tirage)
+
+elif tri_choix == 2:
+    tirage = run_insertion(tirage)
+
+else:
+    tirage = run_fusion(tirage)
+
+print("\nVoici le(s) tirage(s) trié(s) : \n", tirage)
+
+search = test_bool(input("\nVoulez-vous chercher si une valeur présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
+if search:
+    tirage_search = run_dicho(tirage)
