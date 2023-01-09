@@ -17,12 +17,12 @@ def loto(tirage, nombre):
             
         rng = numpy.random.default_rng(graine)
 
-        for i in range (x):
+        for i in range(x):
            tirage[f"Tirage {i + 1}"] = rng.choice(nombre, size = 5, replace = False) ## Distribution uniforme discrète utilisant une même seed connue
 
     else:
         rng = numpy.random.default_rng()
-        for i in range (x):
+        for i in range(x):
             tirage[f"Tirage {i + 1}"] = rng.choice(nombre, size = 5, replace = False) ## Distribution uniforme discrète utilisant une seed aléatoire
         
     return tirage
