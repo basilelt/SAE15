@@ -25,6 +25,22 @@ def test_int(to_int):
         except ValueError:
             to_int = input("Désolé la valeur saisie n'est pas un nombre, réessayez : ")
 
+def test_45int(to_int):
+    while True:
+        test = True
+        try:
+            to_int = int(to_int)
+        except ValueError:
+            to_int = input("Désolé la valeur saisie n'est pas un nombre, réessayez : ")
+            test = False
+        
+        if test:
+            if to_int < 1 or to_int > 45:
+                to_int = input("Désolé la valeur saisie n'est pas un nombre tirable dans un loto (1-45) : ")
+            else:
+                to_int = int(to_int)
+                return to_int
+
 def facto(n):
     if n < 2:
         return 1
