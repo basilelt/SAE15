@@ -4,10 +4,10 @@ def run_insertion(tirage):
             x = tirage.iloc[j, i]
             k = j - 1
 
-            while k >= 0 & tirage.iloc[k, i] > x:
+            while k > -1 and tirage.iloc[k, i] > x:
                 tirage.iloc[k + 1, i] = tirage.iloc[k, i]
-                j -= 1
+                k -= 1
             
             tirage.iloc[k + 1, i] = x
-    
+
     return tirage

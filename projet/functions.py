@@ -26,7 +26,7 @@ def test_int(to_int):
             to_int = input("Désolé la valeur saisie n'est pas un nombre, réessayez : ")
 
 def facto(n):
-    if n <= 1:
+    if n < 2:
         return 1
     
     return n * facto(n - 1)
