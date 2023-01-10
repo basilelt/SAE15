@@ -29,20 +29,19 @@ def dicho(tirage, value):
     
     return tirage_drop
 
-def dicho_rec(value, t, a, b):
-    if a == b : 
-        return a
-    if b == - 1 : 
-        b = len(t) - 1
-    m = (a + b) // 2
-    if t[m] == value :
-        return m
-    elif t[m] > value :
-        return dicho_rec(value, t, a, m-1)
-    else :
-        return dicho_rec(value, t, m+1, b)
+def dicho_rec(value, t):
+    n = len(t)
+    if n == 1:
+        return 0
+    m = n // 2
+    if t[m] == value:
+        return True
     
-    return tirage
+    elif t[m] > value:
+        return dicho_rec(value, t[:m])
+        
+    else:
+        return m + dicho_rec(value, t[m:])
 
 def run_dicho(tirage):
     value = test_45int(input("Quel nombre voulez-vous rechercher dans le(s) tirage(s) ? (entre 1 et 45) : "))
@@ -54,12 +53,15 @@ def run_dicho(tirage):
             test = False
             j = 0
             t = tirage.iloc[:, i].tolist()
+            print(t)
 
-            test = dicho_rec(value, t, 0, -1)
+            test = dicho_rec(value, t)
             
             if test:
                 tirage_drop.insert(j, tirage.columns[i], tirage.iloc[:, i])
                 j += 1
+        
+        tirage = tirage_drop
         
     
     else:
