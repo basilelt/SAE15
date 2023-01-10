@@ -30,10 +30,10 @@ def tri_fusion(L):
     return F
 
 def run_fusion(tirage):
-    for i in range(tirage.shape[1]):
-        to_list = tirage.iloc[:, i].tolist()
+    for i in range(tirage.shape[0]):
+        to_list = tirage.iloc[i, 1:].tolist()
         to_list = tri_fusion(to_list)
-        tirage.iloc[:,i] = pandas.Series(to_list)
+        tirage.iloc[i, 1:] = to_list
 
     return tirage
     

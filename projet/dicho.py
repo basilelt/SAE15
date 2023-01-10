@@ -2,11 +2,11 @@ from functions import test_bool, test_45int
 import pandas
 
 def dicho(tirage_drop, tirage, value):
-    tirage_drop = pandas.DataFrame()
-    for i in range(tirage.shape[1]):
+    tirage_drop = pandas.DataFrame(columns = ['Tirage', 'boule', 'boule', 'boule', 'boule','boule'])
+    j = 0
+    for i in range(tirage.shape[0]):
         test = False
-        j = 0
-        t = tirage.iloc[:, i].tolist()
+        t = tirage.iloc[i, 1:].tolist()
         
         a = 0
         b = len(t)
@@ -24,7 +24,7 @@ def dicho(tirage_drop, tirage, value):
                 a = m
         
         if test:
-            tirage_drop.insert(j, tirage.columns[i], tirage.iloc[:, i])
+            tirage_drop.loc[j] = tirage.loc[i]
             j += 1
     
     return tirage_drop
@@ -51,20 +51,19 @@ def dicho_rec(value, t):
 def run_dicho(tirage):
     value = test_45int(input("Quel nombre voulez-vous rechercher dans le(s) tirage(s) ? (entre 1 et 45) : "))
     rec = test_bool(input("Quel algorithme voulez-vous utiliser pour cette recherche ? (0 : itératif, 1 : récursif) : "))
-    tirage_drop = pandas.DataFrame()
+    tirage_drop = pandas.DataFrame(columns = ['Tirage', 'boule', 'boule', 'boule', 'boule','boule'])
 
     if rec:
-        for i in range(tirage.shape[1]):
+        j = 0
+        for i in range(tirage.shape[0]):
             test = False
-            j = 0
-            t = tirage.iloc[:, i].tolist()
+            t = tirage.iloc[i, 1:].tolist()
 
             test = dicho_rec(value, t)
             
             if test:
-                tirage_drop.insert(j, tirage.columns[i], tirage.iloc[:, i])
-                j += 1
-        
+                tirage_drop.loc[j] = tirage.loc[i]
+                j += 1 
     
     else:
         tirage_drop = dicho(tirage_drop, tirage, value)

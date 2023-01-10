@@ -18,23 +18,23 @@ def loto(tirage, nombre):
         rng = numpy.random.default_rng(graine)
 
         for i in range(x):
-           tirage.loc[i] = [f"Tirage {i + 1}"] + rng.choice(nombre, size = 5, replace = False).tolist() ## Distribution uniforme discrète utilisant une même seed connue
+           tirage[f"Tirage {i + 1}"] = rng.choice(nombre, size = 5, replace = False) ## Distribution uniforme discrète utilisant une même seed connue
 
     else:
         rng = numpy.random.default_rng()
         for i in range(x):
-            tirage.loc[i] = [f"Tirage {i + 1}"] + rng.choice(nombre, size = 5, replace = False).tolist() ## Distribution uniforme discrète utilisant une seed aléatoire
+            tirage[f"Tirage {i + 1}"] = rng.choice(nombre, size = 5, replace = False) ## Distribution uniforme discrète utilisant une seed aléatoire
+        
     return tirage
 
-def run_loto(nombre):
+def run_loto(lst):
     rejouer = True
+    nombre = lst
 
     while rejouer:
-        tirage = pandas.DataFrame(columns = ['Tirage', 'boule', 'boule', 'boule', 'boule','boule'])
+        tirage = pandas.DataFrame()
         loto(tirage, nombre)
-
-        print("\nVoici le(s) tirage(s) non-trié(s) : \n", tirage)
         
-        rejouer = test_bool(input("\nVoulez-vous rejouer ? (0 : non, 1 : oui) : "))
+        rejouer = test_bool(input("Voulez-vous rejouer ? (0 : non, 1 : oui) : "))
 
     return tirage

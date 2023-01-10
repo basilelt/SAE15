@@ -19,10 +19,10 @@ if saved:
    
     saved_tri = test_bool(input("Ces données sont-elles triées ? (0 : non, 1 : oui) : "))
     if saved_tri:
-        search = test_bool(input("\nVoulez-vous chercher si une valeur présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
+        search = test_bool(input("\nVoulez-vous chercher si une valeur est présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
         if search:
             tirage_search = run_dicho(tirage)
-            print("Le(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
+            print("\nLe(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
 
     else:
         tri = test_bool(input("\nVoulez-vous trier ce(s) tirage(s) ? (0 : non, 1 : oui) : "))
@@ -48,10 +48,10 @@ if saved:
                 else:
                     tirage = run_save_h(tirage, True)
 
-            search = test_bool(input("\nVoulez-vous chercher si une valeur présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
+            search = test_bool(input("\nVoulez-vous chercher si une valeur est présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
             if search:
                 tirage_search = run_dicho(tirage)
-                print("Le(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
+                print("\nLe(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
     
 else:
     lst = list_loto()
@@ -60,8 +60,6 @@ else:
 
     print()
     run_stats(lst)
-
-    print("\nVoici le(s) tirage(s) non-trié(s) : \n", tirage)
 
     tri = test_bool(input("\nVoulez-vous trier ce(s) tirage(s) ? (0 : non, 1 : oui) : "))
     if tri:
@@ -86,10 +84,10 @@ else:
             else:
                 tirage = run_save_h(tirage, True)
 
-        search = test_bool(input("\nVoulez-vous chercher si une valeur présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
+        search = test_bool(input("\nVoulez-vous chercher si une valeur est présente dans le(s) tirage(s) ? (0 : non, 1 : oui) : "))
         if search:
             tirage_search = run_dicho(tirage)
-            print("Le(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
+            print("\nLe(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
         
     else:
         save = test_bool(input("\nVoulez-vous sauvegarder ce(s) tirage(s) ? (0 : non, 1 : oui) : "))
