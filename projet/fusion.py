@@ -36,3 +36,4 @@ def run_fusion(tirage):
         tirage.iloc[:,i] = pandas.Series(to_list)
 
     return tirage
+    

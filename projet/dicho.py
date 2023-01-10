@@ -1,7 +1,7 @@
 from functions import test_bool, test_45int
 import pandas
 
-def dicho(tirage, value):
+def dicho(tirage_drop, tirage, value):
     tirage_drop = pandas.DataFrame()
     for i in range(tirage.shape[1]):
         test = False
@@ -32,7 +32,12 @@ def dicho(tirage, value):
 def dicho_rec(value, t):
     n = len(t)
     if n == 1:
-        return 0
+        if t[0] == value:
+            return True
+        
+        else:
+            return False
+    
     m = n // 2
     if t[m] == value:
         return True
@@ -41,19 +46,18 @@ def dicho_rec(value, t):
         return dicho_rec(value, t[:m])
         
     else:
-        return m + dicho_rec(value, t[m:])
+        return dicho_rec(value, t[m:])
 
 def run_dicho(tirage):
     value = test_45int(input("Quel nombre voulez-vous rechercher dans le(s) tirage(s) ? (entre 1 et 45) : "))
     rec = test_bool(input("Quel algorithme voulez-vous utiliser pour cette recherche ? (0 : itératif, 1 : récursif) : "))
-    
+    tirage_drop = pandas.DataFrame()
+
     if rec:
-        tirage_drop = pandas.DataFrame()
         for i in range(tirage.shape[1]):
             test = False
             j = 0
             t = tirage.iloc[:, i].tolist()
-            print(t)
 
             test = dicho_rec(value, t)
             
@@ -61,11 +65,8 @@ def run_dicho(tirage):
                 tirage_drop.insert(j, tirage.columns[i], tirage.iloc[:, i])
                 j += 1
         
-        tirage = tirage_drop
-        
     
     else:
-        tirage = dicho(tirage, value)
+        tirage_drop = dicho(tirage_drop, tirage, value)
     
-    return print(f"Les tirages comportant le nombre {value} sont :\n",
-                tirage)
+    return tirage_drop

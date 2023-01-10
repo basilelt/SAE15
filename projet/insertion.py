@@ -11,3 +11,4 @@ def run_insertion(tirage):
             tirage.iloc[k + 1, i] = x
 
     return tirage
+    
