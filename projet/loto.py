@@ -1,5 +1,6 @@
 import numpy
 import pandas
+import multiprocessing
 from functions import test_bool, test_int
 
 def loto(tirage, nombre): 
@@ -24,6 +25,7 @@ def loto(tirage, nombre):
         rng = numpy.random.default_rng()
         for i in range(x):
             tirage.loc[i] = [f"Tirage {i + 1}"] + rng.choice(nombre, size = 5, replace = False).tolist() ## Distribution uniforme discrète utilisant une seed aléatoire
+                
     return tirage
 
 def run_loto(nombre):
