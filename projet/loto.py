@@ -23,13 +23,12 @@ def loto(tirage, nombre):
     else:
         rng = numpy.random.default_rng()
         for i in range(x):
-            tirage[f"Tirage {i + 1}"] = rng.choice(nombre, size = 5, replace = False) ## Distribution uniforme discrète utilisant une seed aléatoire
+            tirage.loc[f"Tirage {i + 1}"] = rng.choice(nombre, size = 5, replace = False) ## Distribution uniforme discrète utilisant une seed aléatoire
         
     return tirage
 
-def run_loto(lst):
+def run_loto(nombre):
     rejouer = True
-    nombre = lst
 
     while rejouer:
         tirage = pandas.DataFrame()
