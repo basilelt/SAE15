@@ -5,7 +5,12 @@ import path as p
 def run_save_h(tirage, test):
     name = input("Quel nom voulez-vous donner à votre fichier ? : ")
     path = os.path.join(p.__file__.replace("/path.py", ""), "save")
-    print(path)
+
+    files = os.listdir(path)
+    for i in range(len(files)):
+        if name in files[i]:
+            name = input("Ce nom est déjà utilisé, réessayer : ")
+            i = 0
     
     if test:
         path = os.path.join(path, name + "_sorted.csv")
@@ -13,9 +18,8 @@ def run_save_h(tirage, test):
         return
     else:
         path = os.path.join(path, name + "_unsorted.csv")
-        tirage.to_pickle(path)
+        tirage.to_csv(path)
         return
-
 
 def run_read_h():
     path = os.path.join(p.__file__.replace("/path.py", ""), "save")
@@ -30,7 +34,7 @@ def run_read_h():
             test = True
             print("Ce fichier est un fichier pickle et non un csv !\n")
         else:
-            test = not os.path.exists(path)
+            test = not os.path.exists(name)
             if test:
                 print("Ce fichier n'existe pas !\n")
 
