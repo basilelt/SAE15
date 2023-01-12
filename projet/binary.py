@@ -1,10 +1,9 @@
 import os
 import pandas
-import path as p
 
 def run_save_b(tirage, test):
     name = input("Quel nom voulez-vous donner à votre fichier ? : ")
-    path = os.path.join(p.__file__.replace("/path.py", ""), "save")
+    path = os.path.join(__file__.replace("binary.py", ""), "save")
 
     files = os.listdir(path)
     for i in range(len(files)):
@@ -22,7 +21,7 @@ def run_save_b(tirage, test):
         return
 
 def run_read_b():
-    path = os.path.join(p.__file__.replace("/path.py", ""), "save")
+    path = os.path.join(__file__.replace("binary.py", ""), "save")
     print("Voici les fichiers disponibles : \n", os.listdir(path))
 
     test = True

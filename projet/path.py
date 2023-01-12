@@ -1,1 +1,0 @@
-## Donne le chemin de projet courant
