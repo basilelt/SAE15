@@ -5,20 +5,20 @@ def run_save_h(tirage, test):
     name = input("Quel nom voulez-vous donner à votre fichier ? : ")
     path = os.path.join(__file__.replace("humain.py", ""), "save")
 
+    if test:
+        name = name + "_sorted.csv"
+        
+    else:
+        name = name + "_unsorted.csv"
+
     files = os.listdir(path)
     for i in range(len(files)):
         if name in files[i]:
             name = input("Ce nom est déjà utilisé, réessayer : ")
             i = 0
-    
-    if test:
-        path = os.path.join(path, name + "_sorted.csv")
-        tirage.to_csv(path)
-        return
-    else:
-        path = os.path.join(path, name + "_unsorted.csv")
-        tirage.to_csv(path)
-        return
+
+    path = os.path.join(path, name)
+    tirage.to_csv(path)
 
 def run_read_h():
     path = os.path.join(__file__.replace("humain.py", ""), "save")

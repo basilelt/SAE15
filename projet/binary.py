@@ -5,20 +5,20 @@ def run_save_b(tirage, test):
     name = input("Quel nom voulez-vous donner à votre fichier ? : ")
     path = os.path.join(__file__.replace("binary.py", ""), "save")
 
+    if test:
+        name = name + "_sorted.pkl"
+        
+    else:
+        name = name + "_unsorted.pkl"
+
     files = os.listdir(path)
     for i in range(len(files)):
         if name in files[i]:
             name = input("Ce nom est déjà utilisé, réessayer : ")
             i = 0
-    
-    if test:
-        path = os.path.join(path, name + "_sorted.pkl")
-        tirage.to_pickle(path)
-        return
-    else:
-        path = os.path.join(path, name + "_unsorted.pkl")
-        tirage.to_pickle(path)
-        return
+
+    path = os.path.join(path, name)
+    tirage.to_csv(path)
 
 def run_read_b():
     path = os.path.join(__file__.replace("binary.py", ""), "save")
