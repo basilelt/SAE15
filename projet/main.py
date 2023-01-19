@@ -62,7 +62,7 @@ if saved:
                 print("\nLe(s) tirage(s) comportant le nombre choisi sont :\n", tirage_search)
             
             search = False
-            lst_occurence = run_dicho(tirage, search, lst)
+            occurence = run_dicho(tirage, search, lst)
             run_hist(lst_occurence)
     
 else:
