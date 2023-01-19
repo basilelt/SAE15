@@ -1,6 +1,5 @@
 import numpy
 import pandas
-import multiprocessing
 from functions import test_bool, test_int
 
 def loto(tirage, nombre): 
@@ -32,7 +31,7 @@ def run_loto(nombre):
     rejouer = True
 
     while rejouer:
-        tirage = pandas.DataFrame(columns = ['Tirage', 'boule', 'boule', 'boule', 'boule','boule'])
+        tirage = pandas.DataFrame(columns = ['Tirage', 'boule1', 'boule2', 'boule3', 'boule4','boule5'])
         loto(tirage, nombre)
 
         print("\nVoici le(s) tirage(s) non-trié(s) : \n", tirage)

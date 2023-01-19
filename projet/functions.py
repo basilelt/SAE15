@@ -1,5 +1,3 @@
-import numpy
-
 def test_bool(to_bool):
     while True:
         test = True
@@ -46,9 +44,6 @@ def facto(n):
         return 1
     
     return n * facto(n - 1)
-
-def list_loto():
-    return numpy.array(list(i for i in range(1, 46)))
 
 def test_trichoix(tri):
     while True:
