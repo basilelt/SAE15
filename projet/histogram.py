@@ -12,5 +12,5 @@ def run_hist(lst):
     plt.show()
     plt.savefig(path, format = "svg")
 
-    print("\nNous observons que lorsque le nombre de tirages est élevé les nombres de boules tirées par valeur sont à peu près égaux")
+    print("\nNous observons que lorsque le nombre de tirages est élevé, les nombres de boules tirées par valeur sont à peu près égaux")
   

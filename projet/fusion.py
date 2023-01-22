@@ -25,7 +25,7 @@ def tri_fusion(L):
     G = tri_fusion(G)
     D = tri_fusion(D)
 
-    F = fusion (G, D)
+    F = fusion(G, D)
 
     return F
 
